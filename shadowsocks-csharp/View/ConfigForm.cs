@@ -30,7 +30,7 @@ namespace Shadowsocks.View
             this.PerformLayout();
 
             UpdateTexts();
-            this.Icon = Icon.FromHandle(Resources.ssw128.GetHicon());
+            this.Icon = Resources.global;
 
             this.controller = controller;
             controller.ConfigChanged += controller_ConfigChanged;
