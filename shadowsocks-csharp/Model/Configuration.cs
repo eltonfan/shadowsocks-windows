@@ -31,18 +31,23 @@ namespace Shadowsocks.Model
         public ProxyConfig proxy;
         public HotkeyConfig hotkey;
 
-        static readonly string ApplicationDataPath = null;
+        static readonly string appDataPath = null;
         static string CONFIG_FILE = "gui-config.json";
         static Configuration()
         {
             var oneDrivePath = Util.Utils.GetOneDrivePath();
             if(oneDrivePath == null)
-                ApplicationDataPath = Environment.CurrentDirectory;
+                appDataPath = Environment.CurrentDirectory;
             else
-                ApplicationDataPath = Path.Combine(oneDrivePath, @"ApplicationData\Shadowsocks");
+                appDataPath = Path.Combine(oneDrivePath, @"ApplicationData\Shadowsocks");
 
-            CONFIG_FILE = Path.Combine(ApplicationDataPath, "gui-config.json");
+            if (!Directory.Exists(appDataPath))
+                Directory.CreateDirectory(appDataPath);
+
+            CONFIG_FILE = Path.Combine(appDataPath, "gui-config.json");
         }
+
+        public static string ApplicationDataPath => appDataPath;
 
 
         public Server GetCurrentServer()

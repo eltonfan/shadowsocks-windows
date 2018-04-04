@@ -14,9 +14,9 @@ namespace Shadowsocks.Controller
 {
     public class PACServer : Listener.Service
     {
-        public const string PAC_FILE = "pac.txt";
-        public const string USER_RULE_FILE = "user-rule.txt";
-        public const string USER_ABP_FILE = "abp.txt";
+        public static readonly string PAC_FILE = Path.Combine(Configuration.ApplicationDataPath, "pac.txt");
+        public static readonly string USER_RULE_FILE = Path.Combine(Configuration.ApplicationDataPath, "user-rule.txt");
+        public static readonly string USER_ABP_FILE = Path.Combine(Configuration.ApplicationDataPath, "abp.txt");
 
         private string PacSecret { get; set; } = "";
 
