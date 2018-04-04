@@ -24,8 +24,6 @@ namespace Shadowsocks.Controller
         public string LatestVersionLocalName;
         public event EventHandler CheckUpdateCompleted;
 
-        public const string Version = "4.0.4";
-
         private class CheckUpdateTimer : System.Timers.Timer
         {
             public Configuration config;
@@ -95,7 +93,7 @@ namespace Shadowsocks.Controller
                             if (ass != null)
                             {
                                 ass.prerelease = isPreRelease;
-                                if (ass.IsNewVersion(Version, config.checkPreRelease))
+                                if (ass.IsNewVersion(AssemblyInfo.Version, config.checkPreRelease))
                                 {
                                     asserts.Add(ass);
                                 }
